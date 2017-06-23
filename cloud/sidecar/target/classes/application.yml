@@ -1,0 +1,25 @@
+server:
+  port: 8127
+  
+# application
+spring:
+  application:
+    name: sidecar
+    
+# eureka
+eureka:
+  client:
+    healthcheck:
+      enable: true
+    service-url: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka/
+  instance:
+    # default use ip
+    prefer-ip-address: true
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    
+sidecar:
+  port: 8060
+  health-uri: http://localhost:8060/health.json
+    

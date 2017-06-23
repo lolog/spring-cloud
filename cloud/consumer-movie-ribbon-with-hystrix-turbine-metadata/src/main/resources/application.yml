@@ -1,0 +1,30 @@
+# 管理端口
+management:
+  port: 8116
+
+# 业务端口
+server:
+  port: 8115
+  context-path: /ribbon
+  
+spring:
+  application:
+    name: consumer-movie-ribbon-with-hystrix-turbine-metadata
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka
+  instance:
+    prefer-ip-address: true 
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    metadata-map: 
+      management.port: 8116
+
+# 注释：
+# http://localhost:8115/ribbon/consumer/find/1
+# http://localhost:8116/hystrix.stream
+    
+# 设定时间  
+# hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+    

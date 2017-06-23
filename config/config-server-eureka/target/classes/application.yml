@@ -1,0 +1,22 @@
+server:
+  port: 9010
+spring:
+  application:
+    name: config-server-eureka
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/lolog/cloud-config
+          search-paths: 
+            - ro
+            - to
+            
+# 注册到eureka          
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}

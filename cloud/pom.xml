@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>net.yeah.cloud</groupId>
+	<artifactId>cloud</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>provider-user</module>
+		<module>consumer-movie</module>
+		
+		<!--eureka-->
+		<module>eureka-standalone</module>
+		
+		<!--ribbon-->
+		<module>consumer-movie-ribbon</module>
+		<module>consumer-movie-ribbon-customizing-properties</module>
+		<module>consumer-movie-ribbon-without-eureka</module>
+		
+		<!--hystrix-->
+		<module>consumer-movie-ribbon-with-hystrix</module>
+		<module>consumer-movie-ribbon-with-hystrix-propagation</module>
+		<module>consumer-movie-feign-with-hystrix</module>
+		<module>consumer-movie-feign-customizing-disable-hystrix</module><!--禁用单个hystrix-->
+		<module>consumer-movie-feign-with-hystrix-fallback-factory</module>
+		<module>eureka-hystrix-dashboard</module>
+		
+		<!--turbine-->
+		<module>hystrix-turbine</module>
+		<!--
+		 ++ eureka:
+		 ++++ aggregator:
+	     ++++++ clusterConfig: CUSTOMERS
+		 +++++ appConfig: customers
+		-->
+		<module>hystrix-turbine-urlsuffix</module>
+		<module>consumer-movie-ribbon-with-hystrix-turbine-urlsuffix</module>
+		<!--
+		 ++ eureka:
+		 ++++ instance:
+	     ++++++ metadata-map:
+		 ++++++++ management.port: ${management.port:8081}
+		-->
+		<module>hystrix-turbine-metadata</module>
+		<module>consumer-movie-ribbon-with-hystrix-turbine-metadata</module>
+		
+		<!--feign-->
+		<module>consumer-movie-feign</module>
+		<module>consumer-movie-feign-customizing</module>
+		
+		<module>eureka-ha</module>
+		
+		<!--zuul-->
+		<module>gateway-zuul</module>
+		<module>gateway-zuul-regular</module>
+		<module>file-upload</module>
+		<module>gateway-zuul-hystrix-fallback-route</module>
+		
+		<module>sidecar</module>
+		<module>consumer-movie-ribbon-sidecar</module>
+		
+		<!--zuul filter-->
+		<module>gateway-zuul-filter</module>
+	</modules>
+
+	<!--方式1-->
+	<!--
+		<dependencyManagement>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-data-jpa</artifactId>
+					<version>1.5.4.RELEASE</version>
+				</dependency>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<version>1.5.4.RELEASE</version>
+				</dependency>
+			</dependencies>
+		</dependencyManagement>
+	-->
+
+	<!--方式2-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.4.RELEASE</version>
+	</parent>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Camden.SR7</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.5.4.RELEASE</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>

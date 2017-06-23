@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="consumer-movie" />
+        <module name="consumer-movie-feign" />
+        <module name="consumer-movie-feign-customizing" />
+        <module name="consumer-movie-feign-customizing-disable-hystrix" />
+        <module name="consumer-movie-feign-with-hystrix" />
+        <module name="consumer-movie-feign-with-hystrix-fallback-factory" />
+        <module name="consumer-movie-ribbon" />
+        <module name="consumer-movie-ribbon-customizing-properties" />
+        <module name="consumer-movie-ribbon-sidecar" />
+        <module name="consumer-movie-ribbon-with-hystrix" />
+        <module name="consumer-movie-ribbon-with-hystrix-propagation" />
+        <module name="consumer-movie-ribbon-with-hystrix-turbine-metadata" />
+        <module name="consumer-movie-ribbon-with-hystrix-turbine-urlsuffix" />
+        <module name="consumer-movie-ribbon-without-eureka" />
+        <module name="eureka-ha" />
+        <module name="eureka-hystrix-dashboard" />
+        <module name="eureka-standalone" />
+        <module name="file-upload" />
+        <module name="gateway-zuul" />
+        <module name="gateway-zuul-filter" />
+        <module name="gateway-zuul-hystrix-fallback-route" />
+        <module name="gateway-zuul-regular" />
+        <module name="hystrix-turbine" />
+        <module name="hystrix-turbine-metadata" />
+        <module name="hystrix-turbine-urlsuffix" />
+        <module name="provider-user" />
+        <module name="sidecar" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloud" target="1.8" />
+      <module name="consumer-movie" target="1.8" />
+      <module name="consumer-movie-feign" target="1.8" />
+      <module name="consumer-movie-feign-customizing" target="1.8" />
+      <module name="consumer-movie-feign-customizing-disable-hystrix" target="1.8" />
+      <module name="consumer-movie-feign-with-hystrix" target="1.8" />
+      <module name="consumer-movie-feign-with-hystrix-fallback-factory" target="1.8" />
+      <module name="consumer-movie-ribbon" target="1.8" />
+      <module name="consumer-movie-ribbon-customizing-properties" target="1.8" />
+      <module name="consumer-movie-ribbon-sidecar" target="1.8" />
+      <module name="consumer-movie-ribbon-with-hystrix" target="1.8" />
+      <module name="consumer-movie-ribbon-with-hystrix-propagation" target="1.8" />
+      <module name="consumer-movie-ribbon-with-hystrix-turbine-metadata" target="1.8" />
+      <module name="consumer-movie-ribbon-with-hystrix-turbine-urlsuffix" target="1.8" />
+      <module name="consumer-movie-ribbon-without-eureka" target="1.8" />
+      <module name="eureka-ha" target="1.8" />
+      <module name="eureka-hystrix-dashboard" target="1.8" />
+      <module name="eureka-standalone" target="1.8" />
+      <module name="file-upload" target="1.8" />
+      <module name="gateway-zuul" target="1.8" />
+      <module name="gateway-zuul-filter" target="1.8" />
+      <module name="gateway-zuul-hystrix-fallback-route" target="1.8" />
+      <module name="gateway-zuul-regular" target="1.8" />
+      <module name="hystrix-turbine" target="1.8" />
+      <module name="hystrix-turbine-metadata" target="1.8" />
+      <module name="hystrix-turbine-urlsuffix" target="1.8" />
+      <module name="provider-user" target="1.8" />
+      <module name="sidecar" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

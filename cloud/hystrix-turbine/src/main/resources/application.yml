@@ -1,0 +1,31 @@
+server:
+  port: 8110
+  
+# application
+spring:
+  application:
+    name: hystrix-turbine
+
+# eureka config
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka
+  instance:
+    # default use ip
+    prefer-ip-address: true
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+# turbin配置
+turbine:
+  aggregator:
+    # 指定聚合那些集群，多个使用","分隔，默认为default。可使用http://host:port/turbin.stream?cluster={clusterConfig}访问
+    clusterConfig: default
+  # 配置eureka的serviceId列表，表明监控那些服务
+  appConfig: consumer-movie-ribbon-with-hystrix,consumer-movie-feign-with-hystrix
+  # 1. clusterNameExpression指定集群名称，默认表达式appName，此时，turbine.aggregator.clusterConfig需要配置想要监控的应用名称
+  # 2. 当clusterNameExpression:default，turbine.aggregator.clusterConfig不写，默认就是default
+  # 3. 当clusterNameExpression:metadata['cluster']，假设想要监控的应用配置了eureka.instance.metadata-map:ABC,则需要配置，同时
+  #    turbine.aggregator.clusterConfig:ABC
+  clusterNameExpression: new String("default")  # spring SPEL表达式，等价于"'default'"

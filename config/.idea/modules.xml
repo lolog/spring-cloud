@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/config.iml" filepath="$PROJECT_DIR$/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client/config-client.iml" filepath="$PROJECT_DIR$/config-client/config-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client-auth/config-client-auth.iml" filepath="$PROJECT_DIR$/config-client-auth/config-client-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client-eureka/config-client-eureka.iml" filepath="$PROJECT_DIR$/config-client-eureka/config-client-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client-refresh/config-client-refresh.iml" filepath="$PROJECT_DIR$/config-client-refresh/config-client-refresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client-refresh-bus/config-client-refresh-bus.iml" filepath="$PROJECT_DIR$/config-client-refresh-bus/config-client-refresh-bus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server-auth/config-server-auth.iml" filepath="$PROJECT_DIR$/config-server-auth/config-server-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server-crypt/config-server-crypt.iml" filepath="$PROJECT_DIR$/config-server-crypt/config-server-crypt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server-crypt-rsa/config-server-crypt-rsa.iml" filepath="$PROJECT_DIR$/config-server-crypt-rsa/config-server-crypt-rsa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server-eureka/config-server-eureka.iml" filepath="$PROJECT_DIR$/config-server-eureka/config-server-eureka.iml" />
+    </modules>
+  </component>
+</project>

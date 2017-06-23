@@ -1,0 +1,31 @@
+server:
+  port: 8125
+  
+# application
+spring:
+  application:
+    name: file-upload
+  http:
+    multipart:
+      max-file-size: 200Mb     # 默认1MB
+      max-request-size: 200Mb  # 默认10MB
+    
+# eureka
+eureka:
+  client:
+    healthcheck:
+      enable: true
+    service-url: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka/
+  instance:
+    # default use ip
+    prefer-ip-address: true
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    
+# 注释
+# 1.http://localhost:8124/file-upload/upload，文件过大,zuul代理报错 
+#   => the request was rejected because its size (162293477) exceeds the configured maximum (10485760)
+# 原因： zuul代理是结果spring dispatcherservlet 转发
+# 解决： 经过/zuul/** 转发，绕过dispatcherservlet
+  

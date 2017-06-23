@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-client" />
+        <module name="config-client-auth" />
+        <module name="config-client-eureka" />
+        <module name="config-client-refresh" />
+        <module name="config-client-refresh-bus" />
+        <module name="config-server" />
+        <module name="config-server-auth" />
+        <module name="config-server-crypt" />
+        <module name="config-server-crypt-rsa" />
+        <module name="config-server-eureka" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloud" target="1.8" />
+      <module name="config" target="1.8" />
+      <module name="config-client" target="1.8" />
+      <module name="config-client-auth" target="1.8" />
+      <module name="config-client-eureka" target="1.8" />
+      <module name="config-client-refresh" target="1.8" />
+      <module name="config-client-refresh-bus" target="1.8" />
+      <module name="config-server" target="1.8" />
+      <module name="config-server-auth" target="1.8" />
+      <module name="config-server-crypt" target="1.8" />
+      <module name="config-server-crypt-rsa" target="1.8" />
+      <module name="config-server-eureka" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,31 @@
+# 替换jre的jre
+# 加密解密
+server:
+  port: 9007
+spring:
+  application:
+    name: config-server-crypt
+  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/lolog/cloud-config
+          search-paths: 
+            - crt  # 路径
+            - ro
+            - to
+            - rsa
+# keytool -genkeypair -alias scryptkey -keyalg RSA \
+#   -dname "CN=Web Server,OU=Unit,O=Organization,L=City,S=State,C=US" \
+#   -keypass scryptpass -keystore server.jks -storepass jonguo    
+# curl -X POST http://localhost:9006/encrypt -d lolog
+# 结果：AQBC5g1O/i3AQGqGsLiRMim+SwmkYIhT+Snff2zAiQPXAW1EaOs0P6EGGVvbMCv0rl7ihp0TYIpBT/rYVdT/4+WpBo4WnGbYsuQd/ezuRDgVi4Xlf2+akRnns3lDuNXo5nY/m1KsONch5Uwa/z1cldnv4VWtPHJm4hXsn35rRfg7XqNKu8Eky+qTzFtOpkjUx6hKOhU702RArJOm9Eyts/dt+s6eAIR82/JYhAXlX2PCoa8ESPQjbvrC6eY8+NMY7C27rjS7chUO/y37D0LAZX0yaxNVJ8BCFc1TrjHZvx0Zws2QtRG+ciRAcJ2Ia99meeU/OVENfVWBurzvBlcGxEnC3J4UYXzvY2leMv+NJXj/0R7Tc+LGdiJzdrDjjgJhPOE=
+# curl -X POST http://localhost:9006/decrypt -d AQBC5g1O/i3AQGqGsLiRMim+SwmkYIhT+Snff2zAiQPXAW1EaOs0P6EGGVvbMCv0rl7ihp0TYIpBT/rYVdT/4+WpBo4WnGbYsuQd/ezuRDgVi4Xlf2+akRnns3lDuNXo5nY/m1KsONch5Uwa/z1cldnv4VWtPHJm4hXsn35rRfg7XqNKu8Eky+qTzFtOpkjUx6hKOhU702RArJOm9Eyts/dt+s6eAIR82/JYhAXlX2PCoa8ESPQjbvrC6eY8+NMY7C27rjS7chUO/y37D0LAZX0yaxNVJ8BCFc1TrjHZvx0Zws2QtRG+ciRAcJ2Ia99meeU/OVENfVWBurzvBlcGxEnC3J4UYXzvY2leMv+NJXj/0R7Tc+LGdiJzdrDjjgJhPOE=
+# 结果：lolog
+encrypt:
+  keyStore:
+    location: classpath:/server.jks
+    password: jonguo
+    alias: scryptkey
+    secret: scryptpass

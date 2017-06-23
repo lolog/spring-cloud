@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: foo
+  cloud:
+    config:
+      uri: http://localhost:9010
+      profile: deb
+      # 当config-server后端是git时
+      label: master
+      username: lolog
+      password: lolog
+  # rabbitmq配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password:  guest
+
+# 报错 => Fetching config from server at: http://localhost:8888
+#         Could not resolve placeholder 'profile' in value "${profile}"
+# 加载次序 =>
+# bootstrap.*  -> 连接config server,加载远程配置 -> application.*
+# 因此spring config需要配置在bootstrap里面
+
+# 步骤
+# 1. 添加注解
+# 2. 修改git仓库
+# 3. curl -X POST http://localhost:9012/refresh
+#    ["config.client.version","profile"]

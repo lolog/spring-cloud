@@ -1,0 +1,97 @@
+# spring cloud config的基础使用
+---
+server:
+  port: 9000
+  
+spring:
+  application:
+    name: config-server
+  profiles: peer1
+  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/lolog/cloud-config
+          
+  # /{application}/{profile}[/{label}]
+  # /{application}-{profile}.yml
+  # /{label}/{application}-{profile}.yml
+  # /{application}-{profile}.properties
+  # /{label}/{application}-{profile}.properties  
+
+# 通配符
+---
+server:
+  port: 9002
+spring:
+  application:
+    name: config-server
+  profiles: peer2
+  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/lolog/{application}
+
+# 模式匹配
+---
+server:
+  port: 9003
+spring:
+  application:
+    name: config-server
+  profiles: peer3
+  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/lolog/cloud-config
+          repos:
+            simple: https://git.oschina.net/lolog/simple
+            special:
+              pattern: special*/dev*,*special*/test*
+              uri: https://git.oschina.net/lolog/special
+
+# 路径配置
+---
+server:
+  port: 9004
+spring:
+  application:
+    name: config-server
+  profiles: peer4
+  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/lolog/cloud-config
+          search-paths: 
+            - ro  # 路径
+            - to  # 路径
+          # clone到本地
+          clone-on-start: true 
+
+# 用户密码配置
+---
+server:
+  port: 9005
+spring:
+  application:
+    name: config-server
+  profiles: peer5
+  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/lolog/cloud-config
+          search-paths: 
+            - ro  # 路径
+            - to  # 路径
+          # clone到本地
+          username: lolog
+          password: lolog

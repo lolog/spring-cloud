@@ -1,0 +1,54 @@
+# 注释：
+#     修改主机名
+#     1. windows
+#        C:\Windows\System32\drivers\etc\hosts
+#     2.linux
+# 添加: 127.0.0.1 peer1  peer3
+spring:
+  application:
+    name: eureka-ha
+eureka:
+  environment: publish
+  datacenter: cloud
+  instance:
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+# node1
+---
+server:
+  port: 8101
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8102/eureka/,http://peer3:8103/eureka/
+
+# node2
+---
+server:
+  port: 8102
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8101/eureka/,http://peer3:8103/eureka/
+      
+# node3
+---
+server:
+  port: 8103
+spring:
+  profiles: peer3
+eureka:
+  instance:
+    hostname: peer3
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8101/eureka/,http://peer2:8102/eureka/

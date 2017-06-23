@@ -1,0 +1,18 @@
+server:
+  port: 8097
+spring:
+  application:
+    name: consumer-movie-ribbon-customizing-properties
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka
+  instance:
+    prefer-ip-address: true
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+# 配置提供者自定义Ribbon
+provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    

@@ -1,0 +1,28 @@
+server:
+  port: 8122
+  
+# application
+spring:
+  application:
+    name: gateway-zuul-regular
+    
+# eureka
+eureka:
+  client:
+    healthcheck:
+      enable: true
+    service-url: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka/
+  instance:
+    # default use ip
+    prefer-ip-address: true
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+# 注释
+# 1. 启动eureka
+# 2. 修改provider-user的application.name=provider-user-v1,并启动
+# 3. 启动consumer-movie-ribbon-with-hystrix
+# 4. 启动gateway-zuul-regular
+# 5. 启动gateway-zuul(path-serviceid)
+# 6. 打开gateway-zuul-regular访问：http://localhost:8122/v1/provider-user/provider/find/1

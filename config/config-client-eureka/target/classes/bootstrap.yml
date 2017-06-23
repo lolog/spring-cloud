@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: ro
+    client: config-client-eureka
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server-eureka
+        # eureka的用户认证
+        username: lolog
+        password: lolog
+      profile: dev
+      # 当config-server后端是git时
+      label: master
+        
+
+# 注册到eureka
+# 只能配置到bootstrap文件中
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.client}:${spring.application.instance_id:${server.port}}
+    
+
+# 报错 => Fetching config from server at: http://localhost:8888
+#         Could not resolve placeholder 'profile' in value "${profile}"
+# 加载次序 =>
+# bootstrap.*  -> 连接config server,加载远程配置 -> application.*
+# 因此spring config需要配置在bootstrap里面

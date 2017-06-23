@@ -1,0 +1,30 @@
+# 替换jre的jre
+# 加密解密
+server:
+  port: 9006
+spring:
+  application:
+    name: config-server-crypt
+  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/lolog/cloud-config
+          search-paths: 
+            - crt  # 路径
+            - ro
+            - to
+encrypt:
+  key: foo
+
+# config client配置
+#spring:
+#  application:
+#    name: crypt
+#  cloud:
+#    config:
+#      uri: http://localhost:9006
+#      profile: dev
+#      # 当config-server后端是git时
+#      label: master

@@ -1,0 +1,45 @@
+server:
+  port: 8092
+  
+# application
+spring:
+  application:
+    name: eureka-standalone
+    
+# eureka
+eureka:
+  client:
+    healthcheck:
+      enable: true
+    service-url: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka/
+    # setting for euraka server
+    register-with-eureka: false
+    fetch-registry: false
+    region: us-east-1
+  instance:
+    prefer-ip-address: true
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    # 自定义Metadata
+    metadata-map: 
+      zone: theZone  # eureka可以解析的
+      username: zone # 自定义，不影响客户端行为
+    # 如果各应用spring.application.name没有配置值，那么现实该配置值
+    appname: eureka-name-standalone
+  # eureka首页配置
+  dashboard:
+    path: /       # 访问路径
+    enabled: true # 默认启用
+  # 部署环境
+  environment: publish
+  datacenter: cloud
+
+# eureka auth
+# 必须加载security依赖
+security:
+  basic:
+    enabled: true
+  user:
+    name: lolog
+    password: lolog

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cloud.iml" filepath="$PROJECT_DIR$/cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie/consumer-movie.iml" filepath="$PROJECT_DIR$/consumer-movie/consumer-movie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-feign/consumer-movie-feign.iml" filepath="$PROJECT_DIR$/consumer-movie-feign/consumer-movie-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-feign-customizing/consumer-movie-feign-customizing.iml" filepath="$PROJECT_DIR$/consumer-movie-feign-customizing/consumer-movie-feign-customizing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-feign-customizing-disable-hystrix/consumer-movie-feign-customizing-disable-hystrix.iml" filepath="$PROJECT_DIR$/consumer-movie-feign-customizing-disable-hystrix/consumer-movie-feign-customizing-disable-hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-feign-with-hystrix/consumer-movie-feign-with-hystrix.iml" filepath="$PROJECT_DIR$/consumer-movie-feign-with-hystrix/consumer-movie-feign-with-hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-feign-with-hystrix-fallback-factory/consumer-movie-feign-with-hystrix-fallback-factory.iml" filepath="$PROJECT_DIR$/consumer-movie-feign-with-hystrix-fallback-factory/consumer-movie-feign-with-hystrix-fallback-factory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-ribbon/consumer-movie-ribbon.iml" filepath="$PROJECT_DIR$/consumer-movie-ribbon/consumer-movie-ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-ribbon-customizing-properties/consumer-movie-ribbon-customizing-properties.iml" filepath="$PROJECT_DIR$/consumer-movie-ribbon-customizing-properties/consumer-movie-ribbon-customizing-properties.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-ribbon-sidecar/consumer-movie-ribbon-sidecar.iml" filepath="$PROJECT_DIR$/consumer-movie-ribbon-sidecar/consumer-movie-ribbon-sidecar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-ribbon-with-hystrix/consumer-movie-ribbon-with-hystrix.iml" filepath="$PROJECT_DIR$/consumer-movie-ribbon-with-hystrix/consumer-movie-ribbon-with-hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-ribbon-with-hystrix-propagation/consumer-movie-ribbon-with-hystrix-propagation.iml" filepath="$PROJECT_DIR$/consumer-movie-ribbon-with-hystrix-propagation/consumer-movie-ribbon-with-hystrix-propagation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-ribbon-with-hystrix-turbine-metadata/consumer-movie-ribbon-with-hystrix-turbine-metadata.iml" filepath="$PROJECT_DIR$/consumer-movie-ribbon-with-hystrix-turbine-metadata/consumer-movie-ribbon-with-hystrix-turbine-metadata.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-ribbon-with-hystrix-turbine-urlsuffix/consumer-movie-ribbon-with-hystrix-turbine-urlsuffix.iml" filepath="$PROJECT_DIR$/consumer-movie-ribbon-with-hystrix-turbine-urlsuffix/consumer-movie-ribbon-with-hystrix-turbine-urlsuffix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-movie-ribbon-without-eureka/consumer-movie-ribbon-without-eureka.iml" filepath="$PROJECT_DIR$/consumer-movie-ribbon-without-eureka/consumer-movie-ribbon-without-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-ha/eureka-ha.iml" filepath="$PROJECT_DIR$/eureka-ha/eureka-ha.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-hystrix-dashboard/eureka-hystrix-dashboard.iml" filepath="$PROJECT_DIR$/eureka-hystrix-dashboard/eureka-hystrix-dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-standalone/eureka-standalone.iml" filepath="$PROJECT_DIR$/eureka-standalone/eureka-standalone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/file-upload/file-upload.iml" filepath="$PROJECT_DIR$/file-upload/file-upload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-zuul/gateway-zuul.iml" filepath="$PROJECT_DIR$/gateway-zuul/gateway-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-zuul-filter/gateway-zuul-filter.iml" filepath="$PROJECT_DIR$/gateway-zuul-filter/gateway-zuul-filter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-zuul-hystrix-fallback-route/gateway-zuul-hystrix-fallback-route.iml" filepath="$PROJECT_DIR$/gateway-zuul-hystrix-fallback-route/gateway-zuul-hystrix-fallback-route.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-zuul-regular/gateway-zuul-regular.iml" filepath="$PROJECT_DIR$/gateway-zuul-regular/gateway-zuul-regular.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hystrix-turbine/hystrix-turbine.iml" filepath="$PROJECT_DIR$/hystrix-turbine/hystrix-turbine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hystrix-turbine-metadata/hystrix-turbine-metadata.iml" filepath="$PROJECT_DIR$/hystrix-turbine-metadata/hystrix-turbine-metadata.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hystrix-turbine-urlsuffix/hystrix-turbine-urlsuffix.iml" filepath="$PROJECT_DIR$/hystrix-turbine-urlsuffix/hystrix-turbine-urlsuffix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provider-user/provider-user.iml" filepath="$PROJECT_DIR$/provider-user/provider-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sidecar/sidecar.iml" filepath="$PROJECT_DIR$/sidecar/sidecar.iml" />
+    </modules>
+  </component>
+</project>

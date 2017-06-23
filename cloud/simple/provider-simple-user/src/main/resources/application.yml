@@ -1,0 +1,18 @@
+server:
+  port: 9090
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: h2
+    schema: classpath:schema.sql
+    data: classpath:datas.sql
+logging:
+  level: info
+  org.hibernate: info
+  org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+  net.yeah.cloud: debug

@@ -1,0 +1,27 @@
+server:
+  port: 8099
+spring:
+  application:
+    name: consumer-movie-feign
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka
+  instance:
+    prefer-ip-address: true
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+# 问题 ==> java.util.concurrent.TimeoutException: null
+# https://github.com/spring-cloud/spring-cloud-netflix/issues/768
+# https://stackoverflow.com/questions/27375557/hystrix-command-fails-with-timed-out-and-no-fallback-available
+# 方式1
+# 时间配置为5s
+# hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+# 方式2
+# 禁用超时时间
+# hystrix.command.default.execution.timeout.enabled: false
+# 方式3
+# 禁用feign的hystrix
+# feign.hystrix.enabled: false
+    

@@ -1,0 +1,25 @@
+# 替换jre的jre
+# 加密解密
+server:
+  port: 9008
+spring:
+  application:
+    name: config-server-crypt-auth
+  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/lolog/cloud-config
+          search-paths: 
+            - crt  # 路径
+            - ro
+            - to
+encrypt:
+  key: foo
+security:
+  basic:
+    enabled: true
+  user:
+    name: lolog
+    password: lolog

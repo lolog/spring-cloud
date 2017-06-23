@@ -1,0 +1,177 @@
+# eureka
+eureka:
+  client:
+    healthcheck:
+      enable: true
+    service-url: 
+      defaultZone: http://lolog:lolog@localhost:8092/eureka/
+  instance:
+    # default use ip
+    prefer-ip-address: true
+    # 应用名称[ip:port] => ${spring.application.name} [${spring.cloud.client.ipAddress}:${server.port}]
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    
+# 配置routes
+---
+server:
+  port: 8118
+  
+# application
+spring:
+  application:
+    name: gateway-zuul-routes
+  profiles: peer1
+
+zuul:
+  routes:
+    # 配置允许的应用服务映射
+    provider-user: /user/**
+    # consumer-mo，多个以都好分隔
+  # ignored-services: consumer-movie-ribbon-with-hystrix
+  # 或者
+  ignored-services: '*'
+  
+
+# 配置path + serviceid
+---
+server:
+  port: 8119
+  
+# application
+spring:
+  application:
+    name: gateway-zuul-path-serviceid
+  profiles: peer2
+zuul:
+  routes:
+    usr: # http://192.168.1.160:8119/user/provider/find/1
+      path: /user/**
+      serviceId: provider-user
+    mov: # http://192.168.1.160:8119/movie/consumer/find/1
+      path: /movie/**
+      serviceId: consumer-movie-ribbon-with-hystrix
+  
+# 配置path + url
+# 这些简单的URL路由不会被执行为HystrixCommand，也不能用Ribbon负载多个URL。
+---
+server:
+  port: 8120
+  
+# application
+spring:
+  application:
+    name: gateway-zuul-path-url
+  profiles: peer3
+zuul:
+  routes:
+    usr: # http://localhost:8120/user-url/provider/find/1
+      path: /user-url/**
+      url: http://192.168.1.160:8090/
+    mov: # http://localhost:8120/movie-url/consumer/find/1
+      path: /movie-url/**
+      url: http://192.168.1.160:8111/
+  ignored-services: '*'
+
+# url + ribbon + (without eureka)
+---
+server:
+  port: 8121
+  
+# application
+spring:
+  application:
+    name: gateway-zuul-url-ribbon-without-eureka
+  profiles: peer4
+zuul:
+  routes:
+    usr: # http://localhost:8121/user-url-ribbon/provider/find/1
+      path: /user-url-ribbon/**
+      serviceId: provider-user
+    mov: # http://localhost:8121/movie-url-ribbon/consumer/find/1
+      path: /movie-url-ribbon/**
+      serviceId: consumer-movie-ribbon-with-hystrix
+  ignored-services: '*' 
+   
+# 禁用ribbon的eureka
+ribbon:
+  eureka:
+    enabled: false
+provider-user:
+  ribbon:
+    listOfServers: http://localhost:8090/,http://localhost:8094/
+consumer-movie-ribbon-with-hystrix:
+  ribbon:
+    listOfServers: http://localhost:8111/
+
+# zuul prefix
+---
+server:
+  port: 8123
+  
+# application
+spring:
+  application:
+    name: gateway-zuul-prefix
+  profiles: peer5
+zuul:
+  # 访问地址 ==> http://localhost:8123/api/provider-user/provider/find/1
+  prefix: /provider
+  # 添加该配置之后，http://localhost:8123/provider/provider-user/find/1
+  # 实用场景：provider-user修改context-path路径，然后可以设置该选项避免,即针对局部设置
+  # strip-prefix: false
+logging:
+  level: 
+    root: info
+    com.netflix: debug
+
+# zuul cookie and sensitive headers
+---
+server:
+  port: 8124
+# 关闭security验证
+# /routes为代理服务
+management.security.enabled: false
+spring:
+  application:
+    name: gateway-zuul-headers
+  profiles: peer6
+# header配置
+zuul:
+  routes: 
+    usr: # http://localhost:8121/user-header/provider/find/1
+      path: /user-header/**
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      serviceId: provider-user
+    mov: # http://localhost:8121/movie-header/consumer/find/1
+      path: /movie-header/**
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      serviceId: consumer-movie-ribbon-with-hystrix
+    # 文件上传
+    # 大文件访问路径 => http://localhost:8124/zuul/file-upload/upload
+    file:
+      path: /file-upload/***
+      serviceId: file-upload
+  ignored-services: '*'
+  
+# 超大文件通过/zuul/*上传报错TimeoutException: null的解决方案
+# zuul使用hystrix和ribbon,因此对其时间进行设置
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+  
+# sidecar
+---
+server:
+  port: 8128
+  
+# application
+spring:
+  application:
+    name: gateway-zuul-sidecar
+  profiles: peer7
+  
+# 关闭security验证
+# /routes为代理服务
+management.security.enabled: false
+  
